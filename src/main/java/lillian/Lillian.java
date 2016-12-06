@@ -15,8 +15,8 @@ public class Lillian {
         Builder builder = (Builder) BaseTest.getAc().getBean("builder");
         Service service = (Service) BaseTest.getAc().getBean("service");
         ConBean conBean = builder.buildMemery(CConst.PATH_CONFIGURE);
-        String invertedPath = "D:\\code\\myself\\lillian\\data\\inverted.dat";
-        String positivePath = "D:\\code\\myself\\lillian\\data\\positive.dat";
+        String invertedPath = "D:\\code\\myself\\lillian\\data\\lillian\\inverted.dat";
+        String positivePath = "D:\\code\\myself\\lillian\\data\\lillian\\positive.dat";
         String query = "推荐:1111";
         builder.buildInvertedTable(conBean, invertedPath);
         builder.buildPositiveTable(conBean, positivePath);
