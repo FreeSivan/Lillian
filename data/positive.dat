@@ -1,6 +1,6 @@
 0|今天天气真好|1#是呀，天气不错。^要不出去走走？^希望每天天气都这么好!^
 1|你好，我是 *|0#你好，很高兴认识你
-2|您好，我是 *|0#你好 ， 我 是
+2|您好，我是 *|0#你好，我是
 3|你好啊|1#你好，我们刚刚说过一遍了。^你好，客气啥！^
 4|虾米搜索|2#lillian.neural.invoke.TestInvokeClass.testInvokeFunction
 5|搜索|2#lillian.neural.invoke.TestInvokeClass.testInvokeFunction
