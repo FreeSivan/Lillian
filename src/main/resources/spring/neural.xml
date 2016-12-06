@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.springframework.org/schema/beans"
+          xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean class="lillian.neural.parse.wordsplit.impl.SimpleSplit" id="simpleSplit" scope="singleton"/>
+    <bean class="lillian.neural.parse.wordsplit.impl.AnsjSplit" id="ansjSplit" scope="singleton"/>
+
+    <!-- 解析树 -->
+    <bean class="lillian.neural.build.buildXml.impl.ReqParse" id="reqParse" scope="singleton"/>
+    <bean class="lillian.neural.build.buildXml.impl.ResParse" id="resParse" scope="singleton"/>
+    <bean class="lillian.neural.build.buildXml.impl.SecParse" id="secParse" scope="singleton">
+        <property name="request" ref="reqParse"/>
+        <property name="response" ref="resParse"/>
+    </bean>
+    <bean class="lillian.neural.build.buildXml.impl.ConParse" id="conParse" scope="singleton">
+        <property name="secParse" ref="secParse"/>
+    </bean>
+    <bean class="lillian.neural.build.buildData.invertedImpl.BuildSimpleInverted" id="buildSimpleInverted" scope="singleton">
+        <property name="splitWord" ref="ansjSplit"/>
+    </bean>
+    <bean class="lillian.neural.build.buildData.positiveImpl.BuildSimplePositive" id="buildSimplePositive" scope="singleton">
+    </bean>
+
+    <bean class="lillian.neural.service.servicePositive.impl.SimplePositive" id="simplePositive" scope="singleton"/>
+    <bean class="lillian.neural.service.serviceMatcher.impl.SimpleMatcher" id="simpleMatcher" scope="singleton"/>
+    <bean class="lillian.neural.service.serviceInverted.impl.SimpleInverted" id="simpleInverted" scope="singleton"/>
+    <bean class="lillian.neural.service.serviceChoicer.impl.SimpleRChoicer" id="simpleChoicer" scope="singleton"/>
+    <bean class="lillian.neural.service.serviceChoicer.impl.FunctionChoicer" id="functionChoicer" scope="singleton"/>
+    <bean class="lillian.neural.service.serviceQparse.impl.SimpleParse" id="simpleParse" scope="singleton"/>
+
+    <bean class="lillian.neural.build.Builder" id="builder" scope="singleton">
+        <property name="conParse" ref="conParse"/>
+        <property name="invertedBuild" ref="buildSimpleInverted"/>
+        <property name="positiveBuild" ref="buildSimplePositive"/>
+    </bean>
+
+    <bean class="lillian.neural.service.Service" id="service" scope="singleton">
+        <property name="randomChoicer" ref="simpleChoicer"/>
+        <property name="funcChoicer" ref="functionChoicer"/>
+        <property name="inverted" ref="simpleInverted"/>
+        <property name="matcher" ref="simpleMatcher"/>
+        <property name="positive" ref="simplePositive"/>
+        <property name="splitWord" ref="ansjSplit"/>
+        <property name="parse" ref="simpleParse"/>
+    </bean>
+
+</beans>

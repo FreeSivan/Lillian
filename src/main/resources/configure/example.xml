@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<container>
+
+    <section>
+        <request>今天天气真好</request>
+        <response style="random">
+            <random>是呀，天气不错。</random>
+            <random>要不出去走走？</random>
+            <random>希望每天天气都这么好!</random>
+        </response>
+    </section>
+
+    <section>
+        <request>你好，我是 *</request>
+        <response style="single">
+            <single>你好，很高兴认识你</single>
+        </response>
+    </section>
+    <section>
+        <request>您好，我是 *</request>
+        <response style="single">
+            <single>你好，我是</single>
+        </response>
+    </section>
+
+    <section>
+        <request>你好啊</request>
+        <response style="random">
+            <random>你好，我们刚刚说过一遍了。</random>
+            <random>你好，客气啥！</random>
+        </response>
+    </section>
+
+    <section>
+        <request>虾米搜索</request>
+        <response style="function">
+            <function>lillian.neural.invoke.TestInvokeClass.testInvokeFunction</function>
+        </response>
+    </section>
+    <section>
+        <request>搜索</request>
+        <response style="function">
+            <function>lillian.neural.invoke.TestInvokeClass.testInvokeFunction</function>
+        </response>
+    </section>
+    <section>
+        <request>虾米推荐</request>
+        <response style="function">
+            <function>lillian.neural.invoke.TestInvokeClass.testInvokeFunction1</function>
+        </response>
+    </section>
+    <section>
+        <request>推荐</request>
+        <response style="function">
+            <function>lillian.neural.invoke.TestInvokeClass.testInvokeFunction1</function>
+        </response>
+    </section>
+
+</container>
