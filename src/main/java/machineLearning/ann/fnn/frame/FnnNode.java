@@ -36,6 +36,11 @@ public class FnnNode {
     private double dltValue;
 
     /**
+     * 保存当前加合
+     */
+    private double sumAdd;
+
+    /**
      * 由输入值计算输出结果
      * @param input 输入向量
      * @return 输出结果
@@ -51,6 +56,7 @@ public class FnnNode {
         for (int i = 0; i < input.size(); ++i) {
             result += input.get(i) * weightLst.get(i);
         }
+        setSumAdd(result);
         result = thrFunc.activate(result);
         // 保存当前输出
         setCurOutput(result);
@@ -104,5 +110,13 @@ public class FnnNode {
 
     public void setDltValue(double dltValue) {
         this.dltValue = dltValue;
+    }
+
+    public double getSumAdd() {
+        return sumAdd;
+    }
+
+    public void setSumAdd(double sumAdd) {
+        this.sumAdd = sumAdd;
     }
 }
