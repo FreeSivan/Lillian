@@ -1,9 +1,11 @@
 package machineLearning.xmm.hmm.analysis;
 
+import commonUtil.ansjWrap.AnsiWrap;
 import machineLearning.xmm.hmm.commonbean.HmmData;
-import machineLearning.xmm.hmm.dictbuild.InvertedList;
+import machineLearning.xmm.hmm.inverted.InvertedList;
 import machineLearning.xmm.hmm.trainer.ITrainer;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +37,14 @@ public class Analysis {
     private ITrainer transitionTrainer;
 
     private InvertedList inverted;
+
+    private AnsiWrap ansiWrap;
+
+
+    public String[] viterbi(String text) {
+        String[] words = ansiWrap.split(text);
+        return viterbi(words);
+    }
 
     public String[] viterbi(String[] words) {
         if (words.length == 0) {
@@ -165,7 +175,7 @@ public class Analysis {
             // 取出当前style的输出概率表
             Map<String, Double> singleOut = outputMap.get(style);
             // 如果当前style到item没有输出概率，有个保底概率
-            double singleRate = 0.00001;
+            double singleRate = 0.0000001;
             if (singleOut.containsKey(item)) {
                 singleRate += singleOut.get(item);
             }
@@ -185,6 +195,59 @@ public class Analysis {
             return metaBean;
         }
         return metaBean;
+    }
+
+    /**
+     *
+     * @param orgPath
+     * @param dstPath
+     */
+    public void sample(String orgPath, String dstPath) {
+        try {
+            FileReader reader = new FileReader(orgPath);
+            BufferedReader br = new BufferedReader(reader);
+            FileWriter writer = new FileWriter(dstPath);
+            BufferedWriter bw = new BufferedWriter(writer);
+            String str;
+            while ((str = br.readLine()) != null) {
+                // 对str进行分词
+                String[] words = ansiWrap.split(str);
+                if (words == null) {
+                    continue;
+                }
+                String line = "";
+                for (String item : words) {
+                    if (!invertedList.containsKey(item)) {
+                        line += (item + " ");
+                        continue;
+                    }
+                    List<Integer> lst = invertedList.get(item);
+                    if (lst.size() > 1) {
+                        line += "("+item+"|";
+                        for (Integer val : lst) {
+                            line += val+",";
+                        }
+                        line = line.substring(0, line.length()-1);
+                        line += ") ";
+                        continue;
+                    }
+                    Integer value = lst.get(0);
+                    line += ("("+item+"|"+value+")");
+                }
+                if (!"".equals(line)) {
+                    bw.write(line);
+                    bw.newLine();
+                }
+            }
+            br.close();
+            bw.close();
+            reader.close();
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void load(String path1, String path2, String path3, String path4) {
@@ -228,6 +291,18 @@ public class Analysis {
 
     public void setInverted(InvertedList inverted) {
         this.inverted = inverted;
+    }
+
+    public Map<String, List<Integer>> getInvertedList() {
+        return this.invertedList;
+    }
+
+    public void setAnsiWrap(AnsiWrap ansiWrap) {
+        this.ansiWrap = ansiWrap;
+    }
+
+    public AnsiWrap getAnsiWrap() {
+        return ansiWrap;
     }
 
     private static class MetaBean {

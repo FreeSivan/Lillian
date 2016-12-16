@@ -4,8 +4,13 @@
           xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
+
+    <bean class="commonUtil.ansjWrap.AnsiWrap" id="ansiWrap" scope="singleton" init-method="initDict"/>
+
     <bean class="lillian.neural.parse.wordsplit.impl.SimpleSplit" id="simpleSplit" scope="singleton"/>
-    <bean class="lillian.neural.parse.wordsplit.impl.AnsjSplit" id="ansjSplit" scope="singleton"/>
+    <bean class="lillian.neural.parse.wordsplit.impl.AnsjSplit" id="ansjSplit" scope="singleton">
+        <property name="ansiWrap" ref="ansiWrap"/>
+    </bean>
 
     <!-- 解析树 -->
     <bean class="lillian.neural.build.buildXml.impl.ReqParse" id="reqParse" scope="singleton"/>
@@ -45,5 +50,4 @@
         <property name="splitWord" ref="ansjSplit"/>
         <property name="parse" ref="simpleParse"/>
     </bean>
-
 </beans>
