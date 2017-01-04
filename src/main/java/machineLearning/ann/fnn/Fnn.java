@@ -4,15 +4,14 @@ import machineLearning.ann.fnn.frame.FnnLayer;
 import machineLearning.ann.fnn.frame.FnnNet;
 import machineLearning.ann.fnn.frame.FnnNode;
 import machineLearning.ann.fnn.train.Train;
-import machineLearning.ann.neuron.IThreshold;
-import machineLearning.ann.neuron.impl.SigmoidThreshold;
+import machineLearning.ann.fnn.neuron.IThreshold;
+import machineLearning.ann.fnn.neuron.impl.SigmoidThreshold;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

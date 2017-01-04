@@ -14,6 +14,7 @@ import java.util.List;
  * Created by xiwen.yxw on 2016/12/12.
  */
 public class AnsiWrap {
+
     private static final String DIC_SONG = "D:\\code\\myself\\lillian\\data\\hmm\\dict\\1.txt";
     private static final String DIC_ARTIST = "D:\\code\\myself\\lillian\\data\\hmm\\dict\\0.txt";
     private static final String DIC_ALBUM = "D:\\code\\myself\\lillian\\data\\hmm\\dict\\2.txt";

@@ -1,6 +1,6 @@
 package machineLearning.ann.fnn.frame;
 
-import machineLearning.ann.neuron.IThreshold;
+import machineLearning.ann.fnn.neuron.IThreshold;
 
 import java.util.List;
 

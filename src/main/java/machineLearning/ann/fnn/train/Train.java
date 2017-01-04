@@ -3,7 +3,7 @@ package machineLearning.ann.fnn.train;
 import machineLearning.ann.fnn.frame.FnnLayer;
 import machineLearning.ann.fnn.frame.FnnNet;
 import machineLearning.ann.fnn.frame.FnnNode;
-import machineLearning.ann.neuron.IThreshold;
+import machineLearning.ann.fnn.neuron.IThreshold;
 
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class Train {
     private void trainNormal(FnnLayer curLayer, FnnLayer nextLayer) {
         List<FnnNode> curLst = curLayer.getNodeList();
         List<FnnNode> nxtLst = nextLayer.getNodeList();
-        // 迭代当前层次的每一个神经元，做以下操作
+        //  ，做以下操作
         for (int i = 0; i < curLst.size(); ++i) {
             FnnNode fnnNode = curLst.get(i);
             List<Double> input = fnnNode.getCurInput();

@@ -24,13 +24,18 @@ public class HmmTest {
         IBuild changer = new InitialDict();
         IBuild changer1 = new OutputDict();
         IBuild changer2 = new TransitionDict();
+
         String hmmTextPath = "D:\\code\\myself\\lillian\\data\\hmm\\sample.txt";
+
         String initTextPath = "D:\\code\\myself\\lillian\\data\\hmm\\build\\initial.txt";
         String outputTextPath = "D:\\code\\myself\\lillian\\data\\hmm\\build\\output.txt";
         String tranTextPath = "D:\\code\\myself\\lillian\\data\\hmm\\build\\transition.txt";
+
         String dictPath = "D:\\code\\myself\\lillian\\data\\hmm\\dict";
+
         String originPath = "D:\\code\\myself\\lillian\\data\\hmm\\sample\\origin.txt";
         String samplePath = "D:\\code\\myself\\lillian\\data\\hmm\\sample\\sample.txt";
+
         changer.change(hmmTextPath, initTextPath);
         changer1.change(hmmTextPath, outputTextPath);
         changer2.change(hmmTextPath, tranTextPath);

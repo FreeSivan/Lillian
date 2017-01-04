@@ -16,10 +16,10 @@ public abstract class AbstractDict extends AbstractBuild {
         int[] stack = new int[charArr.length];
         int top = -1;
         for (int i = 0; i < charArr.length; ++i) {
-            if (charArr[i] == '（' || charArr[i] == '(') {
+            if (charArr[i] == '(') {
                 stack[++top] = i;
             }
-            else if (charArr[i] == '）'|| charArr[i] == ')') {
+            else if (charArr[i] == ')') {
                 String tmp = str.substring(stack[top--]+1,i);
                 lstStr.add(tmp.trim());
             }

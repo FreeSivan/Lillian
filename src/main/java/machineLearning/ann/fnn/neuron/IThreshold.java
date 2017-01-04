@@ -1,4 +1,4 @@
-package machineLearning.ann.neuron;
+package machineLearning.ann.fnn.neuron;
 
 /**
  * Created by xiwen.yxw on 2016/12/8.

@@ -1,6 +1,6 @@
-package machineLearning.ann.neuron.impl;
+package machineLearning.ann.fnn.neuron.impl;
 
-import machineLearning.ann.neuron.IThreshold;
+import machineLearning.ann.fnn.neuron.IThreshold;
 
 /**
  * Created by xiwen.yxw on 2016/12/8.
