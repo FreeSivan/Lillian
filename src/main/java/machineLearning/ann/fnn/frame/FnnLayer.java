@@ -15,7 +15,8 @@ public class FnnLayer {
 
     public List<Double> inputToOutput(List<Double> lst) {
         List<Double> result = new ArrayList<Double>();
-        for (FnnNode fnnNode : nodeList) {
+        for(int i = 0; i < nodeList.size(); ++i) {
+            FnnNode fnnNode = nodeList.get(i);
             Double tmp = fnnNode.inputToOutput(lst);
             if (tmp != null) {
                 result.add(tmp);
